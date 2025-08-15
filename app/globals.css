@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 220 14% 98%;
+  --bg-soft: 220 12% 97%;
+  --bg-strong: 220 10% 94%;
+  --fg: 224 10% 16%;
+  --fg-soft: 224 8% 38%;
+  --fg-strong: 224 12% 10%;
+
+  --brand-500: 248 100% 66%;
+  --brand-600: 248 92% 58%;
+  --brand-700: 248 90% 50%;
+  --accent-500: 166 84% 56%;
+  --accent-600: 166 70% 46%;
+}
+
+[data-theme="dark"] {
+  --bg: 224 14% 8%;
+  --bg-soft: 224 14% 10%;
+  --bg-strong: 224 14% 14%;
+  --fg: 220 15% 94%;
+  --fg-soft: 220 10% 72%;
+  --fg-strong: 220 20% 98%;
+}
+
+html, body {
+  @apply bg-bg text-fg antialiased;
+}
+
+.glass {
+  background: linear-gradient(180deg, hsl(var(--bg) / .75), hsl(var(--bg-soft) / .55));
+  @apply backdrop-blur-md shadow-glass border border-white/10;
+}
+
+.brand-gradient {
+  background: radial-gradient(1200px 600px at 10% -20%, hsl(var(--brand-600) / .35), transparent 50%),
+              radial-gradient(1200px 600px at 100% 10%, hsl(var(--accent-600) / .35), transparent 50%);
+}
+
+.focus-ring {
+  @apply outline-none ring-2 ring-offset-2 ring-offset-bg ring-brand-500;
+}
+
+.btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 font-medium transition;
+}
+
+.btn-primary {
+  @apply btn bg-gradient-to-b from-brand-500 to-brand-600 text-white shadow-md hover:brightness-110 active:scale-[0.99];
+}
+
+.btn-ghost {
+  @apply btn bg-white/5 hover:bg-white/10 border border-white/10 text-fg;
+}
+
+/* Reduce motion support */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
